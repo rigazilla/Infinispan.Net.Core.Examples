@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Infinispan.Hotrod.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,6 +24,20 @@ namespace Infinispan.Example.Caching
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddInfinispanCache(options =>
+            {
+                InfinispanDG cluster = new InfinispanDG();
+                cluster.AddHost("127.0.0.1");
+                options.Cluster = cluster;
+                options.CacheName = "default";
+            });
+
+            services.AddSession(options =>
+        {
+            options.IdleTimeout = TimeSpan.FromSeconds(10);
+            options.Cookie.HttpOnly = true;
+            options.Cookie.IsEssential = true;
+        });
             services.AddRazorPages();
         }
 
@@ -46,6 +61,7 @@ namespace Infinispan.Example.Caching
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
