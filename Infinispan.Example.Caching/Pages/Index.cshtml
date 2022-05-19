@@ -1,4 +1,6 @@
 ﻿@page
+@using Infinispan.Example.Caching.Pages
+@using Microsoft.AspNetCore.Http
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -6,5 +8,10 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
+    <h2>The time on the server is @DateTime.Now</h2>
+
+    <h2>Name (@Model.DataSource): @HttpContext.Session.GetString(IndexModel.SessionKeyName)</h2>
+    <h2>Age (@Model.DataSource): @HttpContext.Session.GetInt32(IndexModel.SessionKeyAge)</h2>
+    <h2>First Access Date (@Model.DataSource): @HttpContext.Session.GetString(IndexModel.SessionKeyFirstAccess)</h2>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
