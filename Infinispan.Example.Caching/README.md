@@ -6,7 +6,7 @@ Let's go over the three steps (actually 4) needed to implement our app.
 
 # Step 0
 
-Let set our goal: we want to implement and app that shows on a page some basic info, and we want that info to be cached in the session with an idle time of 10 sec.
+Let set our goal: we want to implement and app that shows on a page some basic info, and we want that info to be cached in the session with an idle expiration time of 10 sec.
 
 # Step 1
 
