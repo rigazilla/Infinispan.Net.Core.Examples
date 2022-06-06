@@ -3,14 +3,9 @@ using Infinispan.Hotrod.Caching.Distributed;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddInfinispanCache(options =>
-{
-    InfinispanDG cluster = new InfinispanDG();
-    cluster.AddHost("127.0.0.1");
-    options.Cluster = cluster;
-    options.CacheName = "default";
-});
-
+// Infinispan default setup is used:
+// 127.0.0.1:11222 cacheName: default
+builder.Services.AddInfinispanCache();
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromSeconds(10);
