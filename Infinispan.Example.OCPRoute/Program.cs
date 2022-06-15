@@ -11,9 +11,10 @@ dg.User = "developer";
 dg.Password = "F9nZlJjamlvz99zY";
 dg.Domain = "infinispan";
 dg.ServiceName = "example-infinispan-external-perfs.apps.vrigamon0531.lab.pnq2.cee.redhat.com";
-//dg.AddHost("worker-0.vrigamon0531.lab.pnq2.cee.redhat.com", 31726);
-dg.AddHost("example-infinispan-external-perfs.apps.vrigamon0531.lab.pnq2.cee.redhat.com", 443);
 dg.ClientIntelligence = 0x01;
+//dg.AddHost("worker-0.vrigamon0531.lab.pnq2.cee.redhat.com", 31726);
+// WARNING! Hosts must be added after InfinispanDG is completely configured
+dg.AddHost("example-infinispan-external-perfs.apps.vrigamon0531.lab.pnq2.cee.redhat.com", 443);
 /// [Create a cluster object]
 /// [Create a cache]
 var cache = dg.NewCache<string, string>(new StringMarshaller(), new StringMarshaller(), "default");
