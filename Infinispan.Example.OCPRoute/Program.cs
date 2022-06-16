@@ -6,6 +6,7 @@ var myKey = "myKey";
 InfinispanDG dg = new InfinispanDG();
 // Use a non-authenticated non-encrypted cluster;
 dg.UseTLS = true;
+// Change below values accordingly to your setup
 dg.AuthMech = "DIGEST-MD5";
 dg.User = "developer";
 dg.Password = "F9nZlJjamlvz99zY";
